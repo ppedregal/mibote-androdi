@@ -1,6 +1,7 @@
 package com.thinknowa.botin;
 
 import com.thinknowa.botin.data.ItemManager;
+import com.thinknowa.botin.data.MediaManager;
 
 import android.app.Application;
 
@@ -10,6 +11,7 @@ public class Bottin extends Application{
 	private static Bottin instance;
 	
 	private ItemManager itemMgr;
+	private MediaManager mediaMgr;
 
 	
 	/**
@@ -17,6 +19,8 @@ public class Bottin extends Application{
 	 */
 	public Bottin() {
 		this.instance = this;
+		this.mediaMgr = new MediaManager();
+		this.itemMgr = new ItemManager();
 	}
 	
 	
@@ -37,6 +41,10 @@ public class Bottin extends Application{
 
 	public ItemManager getItemMgr() {
 		return itemMgr;
+	}
+
+	public MediaManager getMediaMgr() {
+		return mediaMgr;
 	}
 }
 

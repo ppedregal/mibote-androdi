@@ -94,6 +94,9 @@ public class AlbumArtView {
 				albumArtRight.getAlbumArtView()) {
 			@Override
 			protected void nextGestureRecognized() {
+				if(fileChooser.next()){
+					fileChooser.getCurrentTrack();
+				}
 				/*
 				app.player.connectPlayer(new OutputCommand() {
 					public void connected(IPlayer output) {
@@ -107,6 +110,9 @@ public class AlbumArtView {
 
 			@Override
 			protected void previousGestureRecognized() {
+				if(fileChooser.back()){
+					fileChooser.getCurrentTrack();
+				}
 				/*
 				app.player.connectPlayer(new OutputCommand() {
 					public void connected(IPlayer output) {

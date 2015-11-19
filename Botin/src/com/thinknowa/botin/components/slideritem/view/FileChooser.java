@@ -10,16 +10,9 @@ import com.thinknowa.botin.components.slideritem.model.TrackBundle;
 import com.thinknowa.botin.components.slideritem.util.DefaultAdapter;
 import com.thinknowa.botin.views.Home;
 
+import android.util.Log;
 import android.widget.ListView;
-/*
-import es.zalo.rumbapp.component.mediaplayer.RumbappPlayer;
-import es.zalo.rumbapp.component.mediaplayer.model.FSobject;
-import es.zalo.rumbapp.component.mediaplayer.model.Instance;
-import es.zalo.rumbapp.component.mediaplayer.model.InstanceVisitor;
-import es.zalo.rumbapp.component.mediaplayer.model.TrackBundle;
-import es.zalo.rumbapp.component.mediaplayer.presentation.InstanceFormatter;
-import es.zalo.rumbapp.component.mediaplayer.util.DefaultAdapter;
-*/
+
 public abstract class FileChooser {
 
 	private final Home listActivity;
@@ -32,34 +25,12 @@ public abstract class FileChooser {
 
 	ListView filterList = null;
 
-	public FileChooser(Home listActivity) {
+	public FileChooser(Home listActivity, ArrayList<Track> list) {
 
 		this.listActivity = listActivity;
 
-//		tracks = new ArrayList<Instance>();
-		tracks = new ArrayList<Track>();
-//		tracks.addAll(Rumbapp.getInstance().getItemMgr().getTracks());
-		/*
-		 * File cover1 = new File(Environment.getExternalStorageDirectory()
-		 * + "/PlayerSong/cover_1.jpg");
-		 * File cover2 = new File(Environment.getExternalStorageDirectory()
-		 * + "/PlayerSong/cover_2.jpg");
-		 * File cover3 = new File(Environment.getExternalStorageDirectory()
-		 * + "/PlayerSong/cover_3.jpg");
-		 * File path1 = new File(Environment.getExternalStorageDirectory()
-		 * + "/PlayerSong/promo_01.mp3");
-		 * File path2 = new File(Environment.getExternalStorageDirectory()
-		 * + "/PlayerSong/promo_02.mp3");
-		 * File path3 = new File(Environment.getExternalStorageDirectory()
-		 * + "/PlayerSong/promo_03.mp3");
-		 * Track t1 = new Track("Eres Mia", path1.getAbsolutePath(), cover1);
-		 * Track t2 = new Track("Adoro", path2.getAbsolutePath(), cover2);
-		 * Track t3 = new Track("Otra Cancion", path3.getAbsolutePath(),
-		 * cover3);
-		 * tracks.add(t1);
-		 * tracks.add(t2);
-		 * tracks.add(t3);
-		 */
+		tracks = list;
+
 		if (tracks.size() > 0) {
 			currentTrack = tracks.get(0);
 		}
@@ -125,6 +96,7 @@ public abstract class FileChooser {
 			if (position < 0) {
 				position = tracks.size() - 1;
 			}
+			Log.d("FileChooser", currentTrack.toString());
 			currentTrack = tracks.get(position);
 			return true;
 		}
@@ -139,6 +111,7 @@ public abstract class FileChooser {
 				position = 0;
 			}
 			currentTrack = tracks.get(position);
+			Log.d("FileChooser", currentTrack.toString());
 			return true;
 		}
 		return false;
@@ -151,6 +124,7 @@ public abstract class FileChooser {
 			if (position >= tracks.size()) {
 				position = 0;
 			}
+			Log.d("FileChooser", currentTrack.toString());
 			return (Track) tracks.get(position);
 		}
 		return (Track) currentTrack;

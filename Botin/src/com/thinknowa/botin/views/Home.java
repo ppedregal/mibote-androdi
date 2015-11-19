@@ -1,5 +1,8 @@
 package com.thinknowa.botin.views;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.thinknowa.botin.Bottin;
 import com.thinknowa.botin.R;
 import com.thinknowa.botin.components.slidemenu.PagerAdapter;
@@ -7,6 +10,7 @@ import com.thinknowa.botin.components.slideritem.model.Track;
 import com.thinknowa.botin.components.slideritem.model.TrackBundle;
 import com.thinknowa.botin.components.slideritem.view.AlbumArtView;
 import com.thinknowa.botin.components.slideritem.view.FileChooser;
+import com.thinknowa.botin.data.ItemManager;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -21,20 +25,13 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ViewFlipper;
 
-/* 
- 
-import es.zalo.rumbapp.component.mediaplayer.model.Instance;
-import es.zalo.rumbapp.component.mediaplayer.model.Track;
-import es.zalo.rumbapp.component.mediaplayer.player.IPlayer;
-import es.zalo.rumbapp.component.mediaplayer.player.OutputCommand;
- */
 
 public class Home extends Activity { // ListActivity
 	// Properties
 	private ActionBar ab;
 //	private ViewPager viewpager;
 //	private EditText searchEdt;
-//	private ViewFlipper vf;
+	private ViewFlipper vf;
 	
 	// Slides
 	private RelativeLayout nowPlayingSlide;
@@ -59,11 +56,19 @@ public class Home extends Activity { // ListActivity
 		
 	}
 	
+	@Override
+	public void onResume() {
+		super.onResume();
+	}
+	
 	private void setupApplication() {
 		ab = getActionBar();
 		app = (Bottin) getApplication();
-		fileChooser = new FileChooser(this) {
-		};
+		
+		ArrayList<Track> list =  app.getItemMgr().getTracks();
+		
+		fileChooser = new FileChooser(this, list) {
+	};
 
 		this.ab.hide();
 		// this.ab.setTitle(getString(R.string.com_mp_txv_title));
@@ -79,8 +84,8 @@ public class Home extends Activity { // ListActivity
 //		SwitchToNowPlayingSlide();
 	}
 	
-	private void SetupInitialView() {
-		setupCurrentTrack(null, 0);
+	private void SetupInitialView() {		
+		setupCurrentTrack(fileChooser.getCurrentTrack(), 0);
 	}
 	
 	
@@ -108,10 +113,7 @@ public class Home extends Activity { // ListActivity
 	 * @param paramView
 	 */
 	protected void lookupViewElements() {
-		/*
-		viewpager = (ViewPager) findViewById(R.id.com_scm_pager);
-		searchEdt = ((EditText) findViewById(R.id.zmb_edt_search));
-		*/
+		this.vf = ((ViewFlipper) findViewById(R.id.home_mainview));
 	}
 	
 	/**
@@ -125,10 +127,12 @@ public class Home extends Activity { // ListActivity
 	 * Establece los valores iniciales en la Vista
 	 */
 	private void setupInitialValues(){
-		/*
-		PagerAdapter padapter = new PagerAdapter(getSupportFragmentManager());
-	    viewpager.setAdapter(padapter);
-	    */
+		ItemManager itemMgr = ((Bottin) getApplication()).getItemMgr();
+		if(itemMgr != null && itemMgr.getTracks().size() > 0 ){
+			this.vf.setDisplayedChild(1);
+		}else{
+			this.vf.setDisplayedChild(0);
+		}
 	}
 	
 	
