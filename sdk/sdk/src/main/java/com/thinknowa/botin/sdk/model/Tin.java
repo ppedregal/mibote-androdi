@@ -7,6 +7,7 @@ public class Tin {
 
     private String id;
     private String name;
+    private String type;
     private Amount amount;
 
     public String getId() {
@@ -32,6 +33,14 @@ public class Tin {
     public void setAmount(Amount amount) {
         this.amount = amount;
     }
+    
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 
 	@Override
 	public String toString() {
