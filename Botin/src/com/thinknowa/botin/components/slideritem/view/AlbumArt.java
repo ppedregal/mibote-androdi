@@ -112,7 +112,7 @@ public class AlbumArt {
 	public void setTrackDigest(final Track track) {
 		if (track != null) {
 			//title.setText(track.accept(InstanceFormatter.SHORT_WITH_NUMBER));
-			artist.setText(track.getArtist());
+			artist.setText(track.getName());
 			// artist.setText(track.GetArtist().accept(InstanceFormatter.SHORT));
 		} else {
 			title.setText("");
