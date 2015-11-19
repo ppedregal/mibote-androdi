@@ -60,10 +60,11 @@ public class LoaderItems extends AsyncTask<Void, Void, ArrayList<Track>> {
 			boolean isCover = true;
 			while(it.hasNext()){
 				Tin item = it.next();
-				String pathCover1 = pathRoot + ((isCover) ? "/cover_1" : "/cover_2");
+				String pathCover1 = pathRoot + ((isCover) ? "/bote_01" : "/bote_01");
+				String plusTitle = ((isCover) ? "02" : " 01");
 				isCover = !isCover;
 				File fCover = getImageFile(pathCover1);
-				result.add(new Track(item.getId(), item.getName(), item.getAmount(), fCover));
+				result.add(new Track(item.getId(), (item.getName() + plusTitle), item.getAmount(), fCover));
 			}
 		}else{
 			Log.d("LoaderItems: ", "Load Items from server(0)");

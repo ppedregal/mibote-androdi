@@ -4,6 +4,7 @@ import com.thinknowa.botin.data.ItemManager;
 import com.thinknowa.botin.data.MediaManager;
 
 import android.app.Application;
+import android.content.res.AssetManager;
 
 public class Bottin extends Application{
 
@@ -45,6 +46,10 @@ public class Bottin extends Application{
 
 	public MediaManager getMediaMgr() {
 		return mediaMgr;
+	}
+	
+	public AssetManager getAssets(){
+		return getApplicationContext().getAssets();
 	}
 }
 

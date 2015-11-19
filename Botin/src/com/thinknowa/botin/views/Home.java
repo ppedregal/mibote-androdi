@@ -11,10 +11,13 @@ import com.thinknowa.botin.components.slideritem.model.TrackBundle;
 import com.thinknowa.botin.components.slideritem.view.AlbumArtView;
 import com.thinknowa.botin.components.slideritem.view.FileChooser;
 import com.thinknowa.botin.data.ItemManager;
+import com.thinknowa.botin.delegate.ILoaderItems;
+import com.thinknowa.botin.delegate.LoaderItems;
 
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ListActivity;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -23,10 +26,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 
-public class Home extends Activity { // ListActivity
+public class Home extends Activity implements ILoaderItems { // ListActivity
 	// Properties
 	private ActionBar ab;
 //	private ViewPager viewpager;
@@ -51,14 +55,15 @@ public class Home extends Activity { // ListActivity
 		lookupViewElements();
 		setupListeners();		
 		setupInitialValues();
-		setupSlides();
-		SetupInitialView();
+//		setupSlides();
+//		setupInitialView();
 		
 	}
 	
 	@Override
 	public void onResume() {
 		super.onResume();
+		new LoaderItems(this).execute();
 	}
 	
 	private void setupApplication() {
@@ -67,8 +72,9 @@ public class Home extends Activity { // ListActivity
 		
 		ArrayList<Track> list =  app.getItemMgr().getTracks();
 		
+		/*
 		fileChooser = new FileChooser(this, list) {
-	};
+	};*/
 
 		this.ab.hide();
 		// this.ab.setTitle(getString(R.string.com_mp_txv_title));
@@ -84,7 +90,7 @@ public class Home extends Activity { // ListActivity
 //		SwitchToNowPlayingSlide();
 	}
 	
-	private void SetupInitialView() {		
+	private void setupInitialView() {		
 		setupCurrentTrack(fileChooser.getCurrentTrack(), 0);
 	}
 	
@@ -113,7 +119,10 @@ public class Home extends Activity { // ListActivity
 	 * @param paramView
 	 */
 	protected void lookupViewElements() {
+		Typeface font = Typeface.createFromAsset(getAssets(), "Shadows Into Light Two.ttf");
 		this.vf = ((ViewFlipper) findViewById(R.id.home_mainview));
+
+		//this.txtTitle.setTypeface(font);
 	}
 	
 	/**
@@ -133,6 +142,22 @@ public class Home extends Activity { // ListActivity
 		}else{
 			this.vf.setDisplayedChild(0);
 		}
+	}
+
+	// ILoaderItems
+	
+	@Override
+	public void loaderItemsPreExecute() {
+		this.vf.setDisplayedChild(0);
+	}
+
+	@Override
+	public void loaderItemsFinished(ArrayList<Track> items) {	
+		ItemManager itemMgr = ((Bottin) getApplication()).getItemMgr();
+		itemMgr.setTracks(items);
+		fileChooser = new FileChooser(this, items){};
+		setupInitialView();
+		this.vf.setDisplayedChild(1);
 	}
 	
 	

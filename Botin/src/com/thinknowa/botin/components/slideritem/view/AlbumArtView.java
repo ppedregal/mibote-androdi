@@ -7,6 +7,7 @@ import com.thinknowa.botin.components.slideritem.model.Track;
 import com.thinknowa.botin.components.slideritem.model.TrackBundle;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.view.View;
 /*
@@ -29,9 +30,11 @@ public class AlbumArtView {
 			final FileChooser fileChooser, TrackBundle bundle) {
 		albumArtViewGroup = activity.findViewById(R.id.relativeLayout_albumArt);
 
-		albumArt = new AlbumArt(albumArtViewGroup, AlbumArt.Type.CENTER);
-		albumArtLeft = new AlbumArt(albumArtViewGroup, AlbumArt.Type.LEFT);
-		albumArtRight = new AlbumArt(albumArtViewGroup, AlbumArt.Type.RIGHT);
+		Typeface font = Typeface.createFromAsset(activity.getAssets(), "Shadows Into Light Two.ttf");
+		
+		albumArt = new AlbumArt(albumArtViewGroup, AlbumArt.Type.CENTER, font);
+		albumArtLeft = new AlbumArt(albumArtViewGroup, AlbumArt.Type.LEFT, font);
+		albumArtRight = new AlbumArt(albumArtViewGroup, AlbumArt.Type.RIGHT, font);
 
 		if (bundle != null) {
 			albumArt.setTrackDigest(bundle.getTrack());
