@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="-7dp"
+                android:orientation="vertical" >
+
+    <ImageView
+            android:id="@+id/picture"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:contentDescription="Cover"
+            android:scaleType="centerCrop"
+            android:src="@drawable/promo_cover"
+            />
+    
+    <!-- @string/album_art -->
+
+    <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:background="#75000000"
+            android:orientation="vertical"
+            android:paddingBottom="12dp"
+            android:paddingTop="3dp" >
+
+        <TextView
+            android:id="@+id/trackTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:singleLine="true"
+            android:text="track init value"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white"
+            android:visibility="visible" />
+
+        <!-- @string/trackInitialValue -->
+        
+        <View
+            
+            android:layout_width="fill_parent"
+            android:layout_height="2dip"
+            android:background="#5033ff33"
+            android:layout_margin="5dp"/>
+
+        <LinearLayout
+                android:id="@+id/artistLayout1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:orientation="horizontal">
+            <!-- 
+            <ImageView
+                    android:scaleType="fitCenter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:src="@drawable/com_mp_artist24" />
+ 			-->
+            <TextView
+                android:id="@+id/trackArtist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:text="Artist init value"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/white"
+                android:visibility="visible" />
+
+            <!-- @string/artistInitialValue -->
+            
+        </LinearLayout>
+        <!-- 
+        <LinearLayout
+            android:id="@+id/artistLayout1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                    android:scaleType="fitCenter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:src="@drawable/album24" />
+
+            <TextView
+                android:id="@+id/trackAlbum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="90dp"
+                android:singleLine="true"
+                android:text="@string/albumInitialValue"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/white"
+                android:visibility="visible" />
+
+        </LinearLayout>
+	 	-->
+    </LinearLayout>
+
+</RelativeLayout>

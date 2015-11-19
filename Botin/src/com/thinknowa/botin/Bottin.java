@@ -1,11 +1,15 @@
 package com.thinknowa.botin;
 
+import com.thinknowa.botin.data.ItemManager;
+
 import android.app.Application;
 
 public class Bottin extends Application{
 
 	
 	private static Bottin instance;
+	
+	private ItemManager itemMgr;
 
 	
 	/**
@@ -31,6 +35,9 @@ public class Bottin extends Application{
 	}
 
 
+	public ItemManager getItemMgr() {
+		return itemMgr;
+	}
 }
 
 
