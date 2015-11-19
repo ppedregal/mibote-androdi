@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- colors -->
+   <color name="translucent">#99000000</color> 
+   
+   <!-- zmb common -->
+   <color name="btt_red">#ffff0000</color>
+   <color name="btt_back">#ff87ba65</color>
+   <color name="btt_accent">#ff87ba65</color>
+    
+   
+</resources>
