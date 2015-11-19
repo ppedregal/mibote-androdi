@@ -8,8 +8,8 @@ import java.util.List;
 import com.thinknowa.botin.Bottin;
 import com.thinknowa.botin.components.slideritem.model.Track;
 import com.thinknowa.botin.sdk.Sdk;
-import com.thinknowa.botin.sdk.Tin;
 import com.thinknowa.botin.sdk.interceptors.LoggingInterceptor;
+import com.thinknowa.botin.sdk.model.Tin;
 
 import android.os.AsyncTask;
 import android.util.Log;
