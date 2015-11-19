@@ -25,4 +25,9 @@ public class Amount {
         this.value = value;
     }
 
+	@Override
+	public String toString() {
+		return "Amount [value=" + value + ", currency=" + currency + "]";
+	}
+
 }

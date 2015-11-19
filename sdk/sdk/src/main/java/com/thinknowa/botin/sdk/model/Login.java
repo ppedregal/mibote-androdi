@@ -21,4 +21,9 @@ public class Login {
         return password;
     }
 
+	@Override
+	public String toString() {
+		return "Login [email=" + email + ", password=" + password + "]";
+	}
+
 }

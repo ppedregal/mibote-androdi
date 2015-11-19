@@ -33,11 +33,9 @@ public class Tin {
         this.amount = amount;
     }
 
-    @Override
-    public String toString() {
-        return "Tin{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "Tin [id=" + id + ", name=" + name + ", amount=" + amount + "]";
+	}
+    
 }
