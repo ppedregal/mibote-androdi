@@ -8,10 +8,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.thinknowa.botin.sdk.Sdk;
-import com.thinknowa.botin.sdk.Tin;
 import com.thinknowa.botin.sdk.exceptions.SdkException;
 import com.thinknowa.botin.sdk.interceptors.LoggingInterceptor;
 import com.thinknowa.botin.sdk.model.Account;
+import com.thinknowa.botin.sdk.model.Tin;
 
 /**
  * Created by ppedregal on 17/11/15.

@@ -1,5 +1,7 @@
 package com.thinknowa.botin.sdk;
 
+import com.thinknowa.botin.sdk.model.Tin;
+
 import retrofit.http.GET;
 import retrofit.http.Path;
 

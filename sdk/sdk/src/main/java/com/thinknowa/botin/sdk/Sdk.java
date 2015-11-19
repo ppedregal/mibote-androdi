@@ -10,7 +10,10 @@ import com.thinknowa.botin.sdk.interceptors.LoggingInterceptor;
 import com.thinknowa.botin.sdk.interceptors.OAuth2Interceptor;
 import com.thinknowa.botin.sdk.model.AccessToken;
 import com.thinknowa.botin.sdk.model.Account;
+import com.thinknowa.botin.sdk.model.Amount;
+import com.thinknowa.botin.sdk.model.Email;
 import com.thinknowa.botin.sdk.model.Login;
+import com.thinknowa.botin.sdk.model.Tin;
 import com.thinknowa.botin.sdk.util.SdkCallAdapterFactory;
 
 import retrofit.GsonConverterFactory;

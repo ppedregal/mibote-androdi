@@ -1,4 +1,4 @@
-package com.thinknowa.botin.sdk;
+package com.thinknowa.botin.sdk.model;
 
 /**
  * Created by ppedregal on 19/11/15.
