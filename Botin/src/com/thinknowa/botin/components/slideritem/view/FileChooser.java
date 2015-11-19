@@ -100,6 +100,7 @@ public abstract class FileChooser {
 			currentTrack = tracks.get(position);
 			return true;
 		}
+		Log.d("FileChooser", "NO BACK");
 		return false;
 	}
 
@@ -114,6 +115,7 @@ public abstract class FileChooser {
 			Log.d("FileChooser", currentTrack.toString());
 			return true;
 		}
+		Log.d("FileChooser", "NO NEXT");
 		return false;
 	}
 

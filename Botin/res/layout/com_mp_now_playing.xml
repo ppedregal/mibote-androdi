@@ -73,6 +73,7 @@
         
         <!-- @string/currPositionInitialValue -->
 
+		<!--  
         <RelativeLayout
                 android:id="@+id/relativeLayout_now_buttons"
                 android:layout_width="fill_parent"
@@ -128,6 +129,7 @@
                             android:src="@drawable/com_mp_next48" />
                 </LinearLayout>
             </RelativeLayout>
+            -->
             <!-- 
             <SeekBar
                     android:id="@+id/progressBar"
@@ -136,6 +138,7 @@
                     android:progressDrawable="@drawable/com_mp_progress_bar_full"
                     android:layout_alignParentTop="true"/>
             -->
+        <!--     
         </RelativeLayout>
-
+ 		-->
 </LinearLayout>

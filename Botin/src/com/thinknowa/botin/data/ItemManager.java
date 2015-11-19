@@ -8,17 +8,45 @@ import android.util.Log;
 
 import com.thinknowa.botin.Bottin;
 import com.thinknowa.botin.components.slideritem.model.Track;
+import com.thinknowa.botin.delegate.ILoaderItems;
+import com.thinknowa.botin.delegate.LoaderItems;
+import com.thinknowa.botin.sdk.Sdk;
+import com.thinknowa.botin.sdk.Tin;
+import com.thinknowa.botin.sdk.interceptors.LoggingInterceptor;
 
 
-public class ItemManager {
+
+public class ItemManager implements ILoaderItems{
 	
 	private ArrayList<Track> tracks = new ArrayList<Track>();
 
+	private Sdk sdk;
+	
 	/**
 	 * Constructor
 	 */
 	public ItemManager() {
-		initManager();
+//		initManager();
+		initSDK();
+		
+	}
+	
+	private void initSDK(){
+		/*
+		sdk = new Sdk("http://172.26.0.222:3000/api/");
+        sdk.logLevel(LoggingInterceptor.Level.BODY);
+        new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				sdk.login("email1@example.com", "test");
+				List<Tin> account1BotesAfter = sdk.tins();
+				
+			}
+		}).start();
+		*/
+		new LoaderItems(this).execute();
 	}
 	
 	private void initManager(){
@@ -59,6 +87,21 @@ public class ItemManager {
 	// -------------------------------------------------------------------------------------
 	public ArrayList<Track> getTracks() {
 		return tracks;
+	}
+
+	// -------------------------------------------------------------------------------------
+	// ILoaderItems
+	// -------------------------------------------------------------------------------------
+		
+	@Override
+	public void loaderItemsPreExecute() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void loaderItemsFinished(ArrayList<Track> items) {
+		this.tracks =items;	
 	}
 
 }
