@@ -1,6 +1,6 @@
 package com.thinknowa.botin;
 
-import com.thinknowa.botin.views.Home;
+import com.thinknowa.botin.views.Login;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,7 +14,7 @@ public class BttMainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.btt_main);
 		
-		startActivity(new Intent(this, Home.class));
+		startActivity(new Intent(this, Login.class));
 		finish();
 	}
 

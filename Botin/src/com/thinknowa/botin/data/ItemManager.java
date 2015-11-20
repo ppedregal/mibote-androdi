@@ -24,7 +24,7 @@ public class ItemManager implements ILoaderItems{
 	 */
 	public ItemManager() {
 //		initManager();
-		initSDK();
+//		initSDK();
 		
 	}
 	
@@ -43,7 +43,7 @@ public class ItemManager implements ILoaderItems{
 			}
 		}).start();
 		*/
-		new LoaderItems(this).execute();
+//		new LoaderItems(this).execute();
 	}
 	
 	private void initManager(){
@@ -84,6 +84,10 @@ public class ItemManager implements ILoaderItems{
 	// -------------------------------------------------------------------------------------
 	public ArrayList<Track> getTracks() {
 		return tracks;
+	}
+	
+	public void setTracks(ArrayList<Track> tracks) {
+		this.tracks = tracks;
 	}
 
 	// -------------------------------------------------------------------------------------
