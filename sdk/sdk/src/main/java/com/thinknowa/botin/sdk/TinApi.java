@@ -37,4 +37,7 @@ public interface TinApi {
     @GET("tins/{id}/movements")
     List<Movement> getMovements(@Path("id")String id);
     
+    @POST("tins/{id}/pay")
+    Void pay(@Path("id")String id,@Query("accountId")String accountId,@Query("amount")Number amount,@Query("description")String description);
+    
 }

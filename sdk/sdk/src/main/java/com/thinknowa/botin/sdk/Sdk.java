@@ -10,6 +10,7 @@ import com.thinknowa.botin.sdk.interceptors.LoggingInterceptor;
 import com.thinknowa.botin.sdk.interceptors.OAuth2Interceptor;
 import com.thinknowa.botin.sdk.model.AccessToken;
 import com.thinknowa.botin.sdk.model.Account;
+import com.thinknowa.botin.sdk.model.Amount;
 import com.thinknowa.botin.sdk.model.Email;
 import com.thinknowa.botin.sdk.model.Login;
 import com.thinknowa.botin.sdk.model.Movement;
@@ -177,6 +178,11 @@ public class Sdk {
     
     public List<Movement> getTinMovements(String id){
     	return api(TinApi.class).getMovements(id);
+    }
+    
+    public Sdk payTin(String id,String accountId,Amount amount,String description){
+    	api(TinApi.class).pay(id, accountId, amount.getValue(), description);
+    	return this;
     }
         
 }
