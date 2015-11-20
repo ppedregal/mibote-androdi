@@ -21,6 +21,11 @@
 			<version>${retrofit.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>com.pubnub</groupId>
+			<artifactId>pubnub</artifactId>
+			<version>3.4</version>
+		</dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>

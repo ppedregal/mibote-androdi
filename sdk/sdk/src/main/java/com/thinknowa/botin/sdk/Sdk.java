@@ -1,11 +1,16 @@
 package com.thinknowa.botin.sdk;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.google.gson.GsonBuilder;
+import com.pubnub.api.Callback;
+import com.pubnub.api.Pubnub;
+import com.pubnub.api.PubnubException;
 import com.squareup.okhttp.Interceptor;
+import com.thinknowa.botin.sdk.exceptions.SdkException;
 import com.thinknowa.botin.sdk.interceptors.LoggingInterceptor;
 import com.thinknowa.botin.sdk.interceptors.OAuth2Interceptor;
 import com.thinknowa.botin.sdk.model.AccessToken;
@@ -22,11 +27,12 @@ import retrofit.Retrofit;
 
 public class Sdk {
 
-    private Map<Class<?>,Object> api = new HashMap<Class<?>,Object>();
+	private Map<Class<?>,Object> api = new HashMap<Class<?>,Object>();
     private LoggingInterceptor loggingInterceptor = new LoggingInterceptor();
     private OAuth2Interceptor oauthInterceptor = new OAuth2Interceptor();
     private SdkCallAdapterFactory callAdapter = new SdkCallAdapterFactory();
     private Retrofit retrofit;
+    private Pubnub pubnub;
 
     public Sdk(String baseUri){
         GsonBuilder builder = new GsonBuilder();
@@ -41,6 +47,7 @@ public class Sdk {
         interceptors.add(loggingInterceptor);
         register(AccountApi.class);
         register(TinApi.class);
+        pubnub = new Pubnub("sub-c-7ee3bb6c-8ee1-11e5-8f62-0619f8945a4f", "pub-c-08510f32-29e1-4fed-81ac-6a1bb40746f2");                
     }
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
@@ -75,7 +82,8 @@ public class Sdk {
      * Retrieves registered apis
      * @return the accounts
      */
-    public <T>T api(Class<T> type) {
+    @SuppressWarnings("unchecked")
+	public <T>T api(Class<T> type) {
         return (T)api.get(type);
     }
 
@@ -92,7 +100,7 @@ public class Sdk {
         api(AccountApi.class).create(user);
         return this;
     }
-
+    
     /**
      * Logs in the provided user
      * @param username the username
@@ -101,7 +109,31 @@ public class Sdk {
      */
     public Sdk login(String username,String password) {
         oauthInterceptor.setAccessToken(api(AccountApi.class).login(new Login(username, password)));
+        try {
+			pubnub.subscribe(new String[]{"account."+oauthInterceptor.getAccessToken().getUserId()},new Callback(){
+				@Override
+				public void successCallback(String channel, Object message) {
+					for (MessageListener listener:messageListeners){
+						listener.onMessage(message);
+					}
+				}
+			});
+		} catch (PubnubException e) {
+			throw new SdkException(e);
+		}
         return this;
+    }
+    
+    private List<MessageListener> messageListeners = new ArrayList<MessageListener>();
+    
+    public Sdk addMessageListener(MessageListener<?> listener){
+    	messageListeners.add(listener);
+    	return this;
+    }
+    
+    public Sdk removeMessageListener(MessageListener<?> listener){
+    	messageListeners.remove(listener);
+    	return this;
     }
 
     /**
@@ -128,6 +160,7 @@ public class Sdk {
      */
     public Sdk logout(){
         api(AccountApi.class).logout();
+    	pubnub.unsubscribe("account."+oauthInterceptor.getAccessToken().getUserId());
         oauthInterceptor.setAccessToken(null);
         return this;
     }
