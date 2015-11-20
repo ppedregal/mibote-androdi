@@ -8,17 +8,12 @@ import java.util.List;
 import com.thinknowa.botin.Bottin;
 import com.thinknowa.botin.components.slideritem.model.Track;
 import com.thinknowa.botin.sdk.Sdk;
-import com.thinknowa.botin.sdk.Tin;
 import com.thinknowa.botin.sdk.interceptors.LoggingInterceptor;
+import com.thinknowa.botin.sdk.model.Tin;
 
 import android.os.AsyncTask;
 import android.util.Log;
-/*
-import es.zalo.rumbapp.Rumbapp;
-import es.zalo.rumbapp.data.DataEvents;
-import es.zalo.rumbapp.model.Event;
-import es.zalo.rumbapp.utils.Util;
-*/
+
 public class LoaderItems extends AsyncTask<Void, Void, ArrayList<Track>> {
 
 	// Properties
@@ -44,12 +39,7 @@ public class LoaderItems extends AsyncTask<Void, Void, ArrayList<Track>> {
 	protected ArrayList<Track> doInBackground(Void... params) {
 		ArrayList<Track> result = new ArrayList<Track>();
 		String pathRoot = Bottin.getInstance().getMediaMgr().getStorageRoot().getAbsolutePath();
-		/*
-		if (!Util.isOnline(Rumbapp.getInstance().getApplicationContext())) {
-			publishProgress(new Void[1]);
-			return null;
-		}
-		*/		
+			
 		sdk = new Sdk("http://172.26.0.222:3000/api/");
 	    sdk.logLevel(LoggingInterceptor.Level.BODY);
 		sdk.login("email1@example.com", "test");
@@ -70,9 +60,6 @@ public class LoaderItems extends AsyncTask<Void, Void, ArrayList<Track>> {
 			Log.d("LoaderItems: ", "Load Items from server(0)");
 		}
 
-
-//		DataEvents dv = DataEvents.getInstance();
-//		return dv.getListEvents();
 		return result;
 	}
 	

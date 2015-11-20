@@ -39,12 +39,13 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
             android:gravity="center"
             android:singleLine="true"
             android:text="Bote de Grego"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/white"
-            android:textSize="35sp"
+            android:textSize="45sp"
             android:visibility="visible" />
 
         <!-- @string/trackInitialValue -->
@@ -78,6 +79,22 @@
 
         </LinearLayout>
 	 	-->
+
+        <TextView
+            android:id="@+id/trackAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="35dp"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="50"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white"
+            android:textSize="40sp"
+            android:visibility="visible" />
+
     </LinearLayout>
 
 </RelativeLayout>

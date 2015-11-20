@@ -5,7 +5,9 @@ import java.util.Map;
 
 import com.thinknowa.botin.sdk.model.AccessToken;
 import com.thinknowa.botin.sdk.model.Account;
+import com.thinknowa.botin.sdk.model.Email;
 import com.thinknowa.botin.sdk.model.Login;
+import com.thinknowa.botin.sdk.model.Tin;
 
 import retrofit.http.Body;
 import retrofit.http.DELETE;

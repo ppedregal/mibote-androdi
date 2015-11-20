@@ -8,10 +8,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.thinknowa.botin.sdk.Sdk;
-import com.thinknowa.botin.sdk.Tin;
 import com.thinknowa.botin.sdk.exceptions.SdkException;
 import com.thinknowa.botin.sdk.interceptors.LoggingInterceptor;
 import com.thinknowa.botin.sdk.model.Account;
+import com.thinknowa.botin.sdk.model.Amount;
+import com.thinknowa.botin.sdk.model.Tin;
 
 /**
  * Created by ppedregal on 17/11/15.
@@ -54,8 +55,11 @@ public class SdkTest {
         sdk.login("email1@example.com", "test");
         List<Tin> account1BotesBefore = sdk.tins();
         Assert.assertNotNull(account1BotesBefore);
-        Tin account1Tin = sdk.createTin("nuevo bote");
-        Assert.assertNotNull(account1Tin);
+        Tin toCreate = new Tin();
+        toCreate.setName("nuevo bote");
+        toCreate.setAmount(new Amount(20,"EUR"));
+        Tin created = sdk.createTin(toCreate);
+        Assert.assertNotNull(created);
         List<Tin> account1BotesAfter = sdk.tins();
         Assert.assertNotNull(account1BotesAfter);
         Assert.assertEquals(account1BotesBefore.size() + 1, account1BotesAfter.size());

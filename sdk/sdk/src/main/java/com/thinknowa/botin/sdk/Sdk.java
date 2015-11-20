@@ -10,7 +10,10 @@ import com.thinknowa.botin.sdk.interceptors.LoggingInterceptor;
 import com.thinknowa.botin.sdk.interceptors.OAuth2Interceptor;
 import com.thinknowa.botin.sdk.model.AccessToken;
 import com.thinknowa.botin.sdk.model.Account;
+import com.thinknowa.botin.sdk.model.Email;
 import com.thinknowa.botin.sdk.model.Login;
+import com.thinknowa.botin.sdk.model.Movement;
+import com.thinknowa.botin.sdk.model.Tin;
 import com.thinknowa.botin.sdk.util.SdkCallAdapterFactory;
 
 import retrofit.GsonConverterFactory;
@@ -39,7 +42,8 @@ public class Sdk {
         register(TinApi.class);
     }
 
-    private Sdk register(Class type){
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	private Sdk register(Class type){
         api.put(type, retrofit.create(type));
         return this;
     }
@@ -131,11 +135,48 @@ public class Sdk {
         return api(AccountApi.class).tins();
     }
 
-    public Tin createTin(String name){
-        Tin tin = new Tin();
-        tin.setName(name);
-        tin.setAmount(new Amount());
+    public Tin createTin(Tin tin){
         return api(AccountApi.class).createTin(tin);
     }
-
+    
+    public Tin getTin(String id){
+    	return api(TinApi.class).get(id);
+    }
+    
+    public Sdk disolveTin(String id){
+    	api(TinApi.class).disolve(id);
+    	return this;
+    }
+    
+    public Sdk inviteTin(String id,String accountId){
+    	api(TinApi.class).invite(id,accountId);
+    	return this;
+    }
+    
+    public Sdk joinTin(String id){
+    	return joinTin(id,"me");
+    }
+    
+    public Sdk joinTin(String id,String accountId){
+    	api(TinApi.class).join(id,accountId);
+    	return this;
+    }
+    
+    public Sdk leaveTin(String id){
+    	return leaveTin(id,"me");
+    }
+    
+    public Sdk leaveTin(String id,String accountId){
+    	api(TinApi.class).leave(id,accountId);
+    	return this;
+    }
+    
+    public List<Account> getTinMembers(String id){
+    	return api(TinApi.class).getMembers(id);
+    }
+    
+    public List<Movement> getTinMovements(String id){
+    	return api(TinApi.class).getMovements(id);
+    }
+        
 }

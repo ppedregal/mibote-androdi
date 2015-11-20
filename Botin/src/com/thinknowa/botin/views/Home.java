@@ -58,6 +58,14 @@ public class Home extends Activity implements ILoaderItems { // ListActivity
 //		setupSlides();
 //		setupInitialView();
 		
+		View decorView = getWindow().getDecorView();
+		
+		ArrayList<Track> list =  app.getItemMgr().getTracks();
+		int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+	              | View.SYSTEM_UI_FLAG_FULLSCREEN;
+		decorView.setSystemUiVisibility(uiOptions);
+		
+		
 	}
 	
 	@Override
@@ -69,9 +77,7 @@ public class Home extends Activity implements ILoaderItems { // ListActivity
 	private void setupApplication() {
 		ab = getActionBar();
 		app = (Bottin) getApplication();
-		
-		ArrayList<Track> list =  app.getItemMgr().getTracks();
-		
+	
 		/*
 		fileChooser = new FileChooser(this, list) {
 	};*/

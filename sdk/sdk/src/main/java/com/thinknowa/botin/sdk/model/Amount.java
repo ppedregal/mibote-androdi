@@ -1,4 +1,4 @@
-package com.thinknowa.botin.sdk;
+package com.thinknowa.botin.sdk.model;
 
 /**
  * Created by ppedregal on 19/11/15.
@@ -24,5 +24,10 @@ public class Amount {
     public void setValue(Double value) {
         this.value = value;
     }
+
+	@Override
+	public String toString() {
+		return "Amount [value=" + value + ", currency=" + currency + "]";
+	}
 
 }

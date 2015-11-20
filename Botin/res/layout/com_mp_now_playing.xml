@@ -33,6 +33,7 @@
 
             </RelativeLayout>
 
+            <!-- 
             <TextView
                 android:id="@+id/trackDuration"
                 android:layout_width="wrap_content"
@@ -44,9 +45,9 @@
                 android:text="Duration init value"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/white" />
-
+			 -->
             <!-- @string/durationInitialValue -->
-            
+            <!--  
             <TextView
                 android:id="@+id/trackPostionSeparator"
                 android:layout_width="wrap_content"
@@ -56,9 +57,9 @@
                 android:text="track position sep"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/white" />
-
+			-->
             <!-- @string/trackPostionSeparator -->
-            
+            <!-- 
             <TextView
                 android:id="@+id/trackCurrPostion"
                 android:layout_width="wrap_content"
@@ -68,7 +69,7 @@
                 android:text="curr Position"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/white" />
-    
+    		-->
         </RelativeLayout>
         
         <!-- @string/currPositionInitialValue -->

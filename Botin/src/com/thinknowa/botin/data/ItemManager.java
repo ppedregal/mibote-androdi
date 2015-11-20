@@ -2,17 +2,14 @@ package com.thinknowa.botin.data;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
-
-import android.util.Log;
 
 import com.thinknowa.botin.Bottin;
 import com.thinknowa.botin.components.slideritem.model.Track;
 import com.thinknowa.botin.delegate.ILoaderItems;
 import com.thinknowa.botin.delegate.LoaderItems;
 import com.thinknowa.botin.sdk.Sdk;
-import com.thinknowa.botin.sdk.Tin;
-import com.thinknowa.botin.sdk.interceptors.LoggingInterceptor;
+
+import android.util.Log;
 
 
 

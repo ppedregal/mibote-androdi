@@ -44,13 +44,9 @@ public class AccessToken {
         this.userId = userId;
     }
 
-    @Override
-    public String toString() {
-        return "AccessToken{" +
-                "id='" + id + '\'' +
-                ", ttl='" + ttl + '\'' +
-                ", created=" + created +
-                ", userId='" + userId + '\'' +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "AccessToken [id=" + id + ", ttl=" + ttl + ", created=" + created + ", userId=" + userId + "]";
+	}
+
 }

@@ -49,6 +49,7 @@ public class AlbumArt {
 
 	private final ImageView albumArt;
 	private final TextView title;
+	private final TextView amount;
 
 	private AsyncTask<Track, Void, Bitmap> actualAsyncTask = null;
 
@@ -61,6 +62,7 @@ public class AlbumArt {
 
 		albumArt = (ImageView) albumArtView.findViewById(R.id.picture);
 		title = (TextView) albumArtView.findViewById(R.id.trackTitle);
+		amount = (TextView) albumArtView.findViewById(R.id.trackAmount);
 		
 //		this.txtTitle.setTypeface(font);
 		title.setTypeface(font);
@@ -121,7 +123,9 @@ public class AlbumArt {
 			//title.setText(track.accept(InstanceFormatter.SHORT_WITH_NUMBER));
 			//txtTitle.setText(track.getName());
 //			artist.setText(track.getName());
+			String money = (track.getAmount() != null && track.getAmount().getValue() != null) ? String.valueOf(track.getAmount().getValue())+ "€" : "90€"; 
 			title.setText(track.getName());
+			amount.setText(money);
 			// artist.setText(track.GetArtist().accept(InstanceFormatter.SHORT));
 		} else {
 			title.setText("");

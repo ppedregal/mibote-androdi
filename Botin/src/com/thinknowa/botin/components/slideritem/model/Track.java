@@ -2,7 +2,7 @@ package com.thinknowa.botin.components.slideritem.model;
 
 import java.io.File;
 
-import com.thinknowa.botin.sdk.Amount;
+import com.thinknowa.botin.sdk.model.Amount;
 
 public class Track  { //extends FSobject
 

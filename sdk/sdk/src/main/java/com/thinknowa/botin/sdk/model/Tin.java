@@ -1,4 +1,4 @@
-package com.thinknowa.botin.sdk;
+package com.thinknowa.botin.sdk.model;
 
 /**
  * Created by ppedregal on 18/11/15.
@@ -7,6 +7,7 @@ public class Tin {
 
     private String id;
     private String name;
+    private String type;
     private Amount amount;
 
     public String getId() {
@@ -32,12 +33,18 @@ public class Tin {
     public void setAmount(Amount amount) {
         this.amount = amount;
     }
+    
+	public String getType() {
+		return type;
+	}
 
-    @Override
-    public String toString() {
-        return "Tin{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                '}';
-    }
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	@Override
+	public String toString() {
+		return "Tin [id=" + id + ", name=" + name + ", amount=" + amount + "]";
+	}
+    
 }

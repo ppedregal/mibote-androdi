@@ -42,13 +42,9 @@ public class Account {
         this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return "Account{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", id='" + id + '\'' +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "Account [username=" + username + ", password=" + password + ", email=" + email + ", id=" + id + "]";
+	}
+    
 }

@@ -1,4 +1,4 @@
-package com.thinknowa.botin.sdk;
+package com.thinknowa.botin.sdk.model;
 
 /**
  * Created by ppedregal on 18/11/15.
@@ -18,4 +18,10 @@ public class Email {
     public void setEmail(String email) {
         this.email = email;
     }
+
+	@Override
+	public String toString() {
+		return "Email [email=" + email + "]";
+	}
+    
 }
