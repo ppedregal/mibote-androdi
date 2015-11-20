@@ -40,13 +40,6 @@ public class LoaderItems extends AsyncTask<Void, Void, ArrayList<Track>> {
 	protected ArrayList<Track> doInBackground(Void... params) {
 		ArrayList<Track> result = new ArrayList<Track>();
 		String pathRoot = Bottin.getInstance().getMediaMgr().getStorageRoot().getAbsolutePath();
-			
-<<<<<<< HEAD
-=======
-		sdk = new Sdk("http://172.26.0.222:3000/api/");
-	    sdk.logLevel(LoggingInterceptor.Level.BODY);
-		sdk.login("email1@example.com", "test");
->>>>>>> b2124f8c3a0486d275061a01ed8a71951cddda87
 		List<Tin> account1BotesAfter = sdk.tins();
 		if(account1BotesAfter != null){
 			Log.d("LoaderItems: ", "Load Items from server("+account1BotesAfter.size()+")");
