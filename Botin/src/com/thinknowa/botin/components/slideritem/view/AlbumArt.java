@@ -2,11 +2,13 @@ package com.thinknowa.botin.components.slideritem.view;
 
 import java.io.File;
 
+import com.thinknowa.botin.Bottin;
 import com.thinknowa.botin.R;
 import com.thinknowa.botin.components.slideritem.model.Track;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
@@ -47,18 +49,23 @@ public class AlbumArt {
 
 	private final ImageView albumArt;
 	private final TextView title;
-	private final TextView artist;
+	private final TextView amount;
 
 	private AsyncTask<Track, Void, Bitmap> actualAsyncTask = null;
 
-	public AlbumArt(View albumArtViewGroup, Type type) {
+	public AlbumArt(View albumArtViewGroup, Type type, Typeface font) {
 
 		albumArtView = albumArtViewGroup.findViewById(type.getRId());
 		this.type = type;
+		
+//		Typeface font = Typeface.createFromAsset(Bottin.getInstance().getAssets(), "Shadows Into Light Two.ttf");
 
 		albumArt = (ImageView) albumArtView.findViewById(R.id.picture);
 		title = (TextView) albumArtView.findViewById(R.id.trackTitle);
-		artist = (TextView) albumArtView.findViewById(R.id.trackArtist);
+		amount = (TextView) albumArtView.findViewById(R.id.trackAmount);
+		
+//		this.txtTitle.setTypeface(font);
+		title.setTypeface(font);
 
 		albumArtView.getViewTreeObserver().addOnPreDrawListener(
 				new ViewTreeObserver.OnPreDrawListener() {
@@ -79,7 +86,7 @@ public class AlbumArt {
 	public void setTrack(final Track track) {
 		setTrackDigest(track);
 
-		/*
+		
 		if (track != null) {
 			actualAsyncTask = new AlbumArtResolver() {
 
@@ -95,13 +102,13 @@ public class AlbumArt {
 				protected void onPostExecute(Bitmap bitmap) {
 					if (actualAsyncTask == this && bitmap != null) {
 						albumArt.setImageBitmap(bitmap);
-						Log.v("AlbumArt", "albumart for " + track.getFullPath()
+						Log.v("AlbumArt", "albumart for " + track.getName()
 								+ " resolved");
 					}
 				}
 			}.execute(track);
 		}
-		*/
+		
 	}
 
 	/**
@@ -110,13 +117,18 @@ public class AlbumArt {
 	 * @param track
 	 */
 	public void setTrackDigest(final Track track) {
+		Log.d("AlbumArt", "setTrackDigest 1");
 		if (track != null) {
+			Log.d("AlbumArt", "setTrackDigest 2");
 			//title.setText(track.accept(InstanceFormatter.SHORT_WITH_NUMBER));
-			artist.setText(track.getName());
+			//txtTitle.setText(track.getName());
+//			artist.setText(track.getName());
+			String money = (track.getAmount() != null && track.getAmount().getValue() != null) ? String.valueOf(track.getAmount().getValue())+ "€" : "90€"; 
+			title.setText(track.getName());
+			amount.setText(money);
 			// artist.setText(track.GetArtist().accept(InstanceFormatter.SHORT));
 		} else {
 			title.setText("");
-			artist.setText("");
 		}
 
 		File file = (track != null) ? track.getCover() : null;
